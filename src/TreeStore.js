@@ -21,7 +21,7 @@
    */
   Ext.define('Rally.data.wsapi.TreeStore', {
 
-    // Client Metrics Note: WsapiTreeStore is too low level to record its load begins/ends. The problem is
+    // Client Metrics Note: WsapiTreeStore  is too low level to record its load begins/ends. The problem is
     // client metrics can only reliably keep track of one load per component at a time. WsapiTreeStore makes
     // no guarantee that only one load will happen at a time. It's better to measure the component that is using
     // the store. All is not lost, the actual data requests that WsapiTreeStore makes *are* measured by client metrics.
@@ -59,7 +59,7 @@
        */
       childToParentTypeMap: {
         defect: ['DefectSuite', 'Requirement'],
-        hierarchicalrequirement: ['Parent', 'PortfolioItem'], // NOTE: needs to be added for generic case, but will kill expanding anything but UserStory currently
+        hierarchicalrequirement: ['Parent', 'Successors'], // NOTE: needs to be added for generic case, but will kill expanding anything but UserStory currently
         task: ['WorkProduct'],
         testcase: ['WorkProduct']
       },
@@ -71,7 +71,7 @@
       parentChildTypeMap: {
         hierarchicalrequirement: [
           {typePath: 'defect', collectionName: 'Defects'},
-          {typePath: 'hierarchicalrequirement', collectionName: 'Children'}, // NOTE: will not work until childToParentTypeMap has hierarchicalrequirement added in
+          {typePath: 'hierarchicalrequirement', collectionName: 'Predecessors'}, // NOTE: will not work until childToParentTypeMap has hierarchicalrequirement added in
           {typePath: 'task', collectionName: 'Tasks'},
           {typePath: 'testcase', collectionName: 'TestCases'}
         ],
@@ -169,7 +169,7 @@
      *
      * False to have expanding nodes ignore Project Scope settings.
      */
-    expandingNodesRespectProjectScoping: true,
+    expandingNodesRespectProjectScoping: false,
 
     _getModelFromTypePath: function (typePath) {
       if (!this.modelTypePathMap) {
