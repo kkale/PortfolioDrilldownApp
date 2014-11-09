@@ -47,7 +47,7 @@
        * @private
        */
       expandedCollectionNames: {
-        hierarchicalrequirement: ['Children', 'Defects', 'Tasks','TestCases'],
+        hierarchicalrequirement: ['Children', 'Defects', 'Tasks', 'TestCases', 'Predecessors'],
         defect: ['Tasks','TestCases'],
         defectsuite: ['Defects','Tasks'],
         testset: ['Tasks', 'TestCases']
